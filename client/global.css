@@ -1,0 +1,526 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .gradient-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  }
+
+  .gradient-indigo {
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Mobile-first responsive utilities */
+  .mobile-scroll-container {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .mobile-scroll-container::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+
+  .mobile-scroll-container::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 2px;
+  }
+
+  .mobile-scroll-container::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 2px;
+  }
+
+  .mobile-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+
+  /* Enhanced responsive table container for mobile */
+  .responsive-table {
+    min-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @media (max-width: 640px) {
+    .responsive-table {
+      font-size: 0.875rem;
+    }
+
+    /* Make table cells more compact on mobile */
+    .responsive-table table th,
+    .responsive-table table td {
+      padding: 0.5rem 0.25rem;
+      font-size: 0.75rem;
+      line-height: 1.25;
+    }
+
+    /* Ensure minimum touch target size for interactive elements */
+    .responsive-table button {
+      min-height: 32px;
+      min-width: 32px;
+    }
+  }
+
+  /* Enhanced mobile table styling */
+  @media (max-width: 768px) {
+    /* Make tables fit better on small screens */
+    table {
+      font-size: 0.875rem;
+    }
+
+    table th {
+      padding: 0.5rem 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    table td {
+      padding: 0.5rem 0.25rem;
+      font-size: 0.875rem;
+    }
+
+    /* Ensure buttons in tables are touch-friendly */
+    table button {
+      min-height: 36px;
+      min-width: 36px;
+      padding: 0.25rem;
+    }
+
+    /* Handle long text in table cells */
+    table td {
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* Allow wrapping for action columns */
+    table td:last-child {
+      max-width: none;
+      white-space: normal;
+    }
+  }
+
+  /* Enhanced mobile touch targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile-optimized text sizes */
+  @media (max-width: 768px) {
+    .mobile-text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+
+    .mobile-text-base {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    .mobile-text-sm {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+  }
+
+  /* Mobile card spacing */
+  @media (max-width: 768px) {
+    .mobile-card-padding {
+      padding: 1rem;
+    }
+
+    .mobile-spacing-y {
+      margin-top: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  /* Better mobile form inputs */
+  @media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      font-size: 16px; /* Prevents zoom on iOS */
+      min-height: 44px;
+    }
+  }
+
+  /* Prevent layout shift when dialogs lock scroll */
+  html, body {
+    scrollbar-gutter: stable both-edges;
+  }
+
+  /* Mobile safe area padding for devices with notches */
+  .mobile-safe-area {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Improved mobile button styling */
+  @media (max-width: 768px) {
+    .mobile-button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      min-height: 48px;
+      touch-action: manipulation;
+    }
+  }
+
+  /* Mobile-optimized dialogs: fullscreen, edge-to-edge */
+  @media (max-width: 640px) {
+    [data-radix-dialog-content] {
+      left: 0 !important;
+      top: 0 !important;
+      transform: none !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      max-width: none !important;
+      margin: 0 !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+    }
+
+    [data-radix-dialog-overlay] {
+      background-color: rgba(0, 0, 0, 0.6) !important;
+    }
+  }
+
+  /* Ensure dialogs are properly contained on mobile */
+  @media (max-width: 768px) {
+    .mobile-dialog-container {
+      max-height: 95vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 0.875rem; /* Slightly smaller text on mobile */
+    }
+
+    .mobile-dialog-header {
+      padding: 0.75rem 1rem 1rem !important;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .mobile-dialog-header h2 {
+      font-size: 1.125rem !important; /* Responsive title size */
+      line-height: 1.5 !important;
+    }
+
+    .mobile-dialog-content {
+      padding: 1rem !important;
+    }
+
+    /* Better mobile form spacing */
+    .mobile-dialog-container .space-y-4 > * + * {
+      margin-top: 0.75rem !important;
+    }
+
+    .mobile-dialog-container .space-y-6 > * + * {
+      margin-top: 1rem !important;
+    }
+
+    /* Mobile-friendly input styling */
+    .mobile-dialog-container input,
+    .mobile-dialog-container select,
+    .mobile-dialog-container textarea {
+      font-size: 16px !important; /* Prevents zoom on iOS */
+      min-height: 44px !important;
+    }
+
+    /* Better mobile button spacing */
+    .mobile-dialog-container .flex.gap-2 {
+      gap: 0.5rem !important;
+    }
+
+    .mobile-dialog-container .flex.gap-3 {
+      gap: 0.75rem !important;
+    }
+
+    /* Mobile focus management */
+    .mobile-dialog-container *:focus {
+      outline: 2px solid #3b82f6 !important;
+      outline-offset: 2px !important;
+    }
+
+    /* Prevent zoom on input focus for iOS */
+  .mobile-dialog-container input:focus,
+  .mobile-dialog-container select:focus,
+  .mobile-dialog-container textarea:focus {
+    transform: none !important;
+    zoom: 1 !important;
+  }
+}
+
+/* Admin Layout Mobile Optimizations */
+@layer utilities {
+  /* Hide scrollbars while maintaining functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Extra small breakpoint for very small devices */
+  @media (min-width: 375px) {
+    .xs\:inline {
+      display: inline;
+    }
+
+    .xs\:hidden {
+      display: none;
+    }
+  }
+
+  /* Touch-friendly interactive elements */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Enhanced mobile-specific classes for admin layout */
+  @media (max-width: 640px) {
+    .admin-mobile-nav {
+      font-size: 0.75rem;
+      padding: 0.375rem 0.5rem;
+    }
+
+    .admin-mobile-header {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+
+    .admin-mobile-title {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+  }
+
+  /* Improved tap targets for mobile */
+  @media (max-width: 768px) {
+    .mobile-tap-target {
+      min-height: 44px;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  /* Admin-specific responsive utilities */
+  .admin-responsive-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .admin-responsive-grid {
+      gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .admin-responsive-grid {
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+
+  /* Mobile dropdown menu animations */
+  .mobile-menu-enter {
+    animation: mobile-menu-slide-down 0.2s ease-out;
+  }
+
+  .mobile-menu-exit {
+    animation: mobile-menu-slide-up 0.15s ease-in;
+  }
+
+  @keyframes mobile-menu-slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes mobile-menu-slide-up {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Improved mobile navigation button */
+  @media (max-width: 768px) {
+    .mobile-nav-button {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mobile-nav-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.1);
+      transition: width 0.3s, height 0.3s;
+      transform: translate(-50%, -50%);
+    }
+
+    .mobile-nav-button:active::before {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+  /* Enhanced mobile modal animation */
+  @media (max-width: 640px) {
+    [data-state="open"][data-radix-dialog-content] {
+      animation-duration: 200ms !important;
+      animation-timing-function: ease-out !important;
+    }
+
+    [data-state="closed"][data-radix-dialog-content] {
+      animation-duration: 150ms !important;
+      animation-timing-function: ease-in !important;
+    }
+  }
+}
